@@ -12,6 +12,8 @@ Every child button can have a `Icon`,`Title`, `SubTitle` which can be customized
 
 The package will handle the animation by itself.
 
+![alt text](https://github.com/ralphnoel13/flutter_boom_menu/blob/master/screenshot/ezgif.com-video-to-gif.gif)
+
 **Example Usage ( complete with all params ):**
 
 ```dart
