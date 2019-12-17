@@ -68,3 +68,10 @@ Widget build(BuildContext context) {
     );
 }
 ```
+## Issues & Feedback
+
+Please file an [issue](https://github.com/ralphnoel13/flutter_boom_menu/issues) to send feedback or report a bug. Thank you!
+
+## Contributing
+
+Every pull request is welcome.
