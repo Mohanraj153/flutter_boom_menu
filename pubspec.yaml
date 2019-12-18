@@ -1,6 +1,6 @@
 name: flutter_boom_menu
-description: Flutter plugin to implement a Boom Menu, with icons, title, subtitle, animated FAB Icons and hide on scrolling.
-version: 0.0.1
+description: Flutter plugin to implement a Boom Menu, with icons, title, sub title, animated FAB Icon and hide on scrolling.
+version: 0.0.2
 author:
   Mohanraj <mohanraj153@gmail.com>
   Ralph Noel Bruno <brunoralphjr@gmail.com>
