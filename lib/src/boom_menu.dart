@@ -17,10 +17,16 @@ class BoomMenu extends StatefulWidget {
   final Color foregroundColor;
   final double elevation;
   final ShapeBorder fabMenuBorder;
+  final Alignment fabAlignment;
 
   final double marginLeft;
   final double marginRight;
   final double marginBottom;
+
+  final double fabPaddingLeft;
+  final double fabPaddingRight;
+  final double fabPaddingTop;
+  final double fabPaddingBottom;
 
   /// The color of the background overlay.
   final Color overlayColor;
@@ -79,6 +85,11 @@ class BoomMenu extends StatefulWidget {
     this.onClose,
     this.overlayVisible = false,
     this.fabMenuBorder = const CircleBorder(),
+    this.fabAlignment = Alignment.centerRight,
+    this.fabPaddingRight = 0,
+    this.fabPaddingLeft = 0,
+    this.fabPaddingBottom = 0,
+    this.fabPaddingTop = 0,
     this.onPress,
     this.animationSpeed = 150
   });
@@ -216,18 +227,24 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
     );
 
     return Positioned(
-      left: widget.marginLeft - 16,
-      bottom: widget.marginBottom - 16,
-      right: widget.marginRight - 16,
       child: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: List.from(fabChildren)
             ..add(
-              Container(
-                margin: EdgeInsets.only(top: 8.0, right: 2.0),
-                child: animatedFloatingButton,
+              Align(
+                alignment: widget.fabAlignment,
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: 28.0 + widget.fabPaddingLeft,
+                    right: widget.fabPaddingRight,
+                    top: widget.fabPaddingTop,
+                    bottom: widget.fabPaddingBottom,
+                  ),
+                  margin: const EdgeInsets.only(top: 8.0),
+                  child: animatedFloatingButton,
+                ),
               ),
             ),
         ),
