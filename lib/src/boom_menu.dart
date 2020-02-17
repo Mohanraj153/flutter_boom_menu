@@ -223,30 +223,46 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
       onLongPress: _toggleChildren,
       callback: (_open || widget.onPress == null) ? _toggleChildren : widget.onPress,
       child: child,
-      shape: widget.fabMenuBorder
+      shape: widget.fabMenuBorder,
     );
 
     return Positioned(
+      left: widget.marginLeft + 16,
+      bottom: widget.marginBottom + 50,
+      right: widget.marginRight - 16,
       child: Container(
+        alignment: Alignment.bottomCenter,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        padding: EdgeInsets.only(
+          top: widget.marginBottom +
+              widget.fabPaddingBottom +
+              widget.fabPaddingTop + 56 + 16,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: List.from(fabChildren)
-            ..add(
-              Align(
-                alignment: widget.fabAlignment,
-                child: Container(
-                  padding: EdgeInsets.only(
-                    left: 28.0 + widget.fabPaddingLeft,
-                    right: widget.fabPaddingRight,
-                    top: widget.fabPaddingTop,
-                    bottom: widget.fabPaddingBottom,
-                  ),
-                  margin: const EdgeInsets.only(top: 8.0),
-                  child: animatedFloatingButton,
-                ),
+          children: <Widget> [
+            Expanded(
+              child: ListView(
+                children: List.from(fabChildren),
+                reverse: true,
               ),
             ),
+            Align(
+              alignment: widget.fabAlignment,
+              child: Container(
+                padding: EdgeInsets.only(
+                  left: 28.0 + widget.fabPaddingLeft,
+                  right: widget.fabPaddingRight,
+                  top: widget.fabPaddingTop,
+                  bottom: widget.fabPaddingBottom,
+                ),
+                margin: const EdgeInsets.only(top: 8.0),
+                child: animatedFloatingButton,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -255,7 +271,7 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     final children = [
-      if (!widget.overlayVisible) _renderOverlay(),
+      !widget.overlayVisible ? _renderOverlay() : Container(),
       _renderButton(),
     ];
 
